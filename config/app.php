@@ -230,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         // custom aliases
+        'Products' => App\Facades\Products::class,
         'Users' => App\Facades\Users::class,
     ],
 
