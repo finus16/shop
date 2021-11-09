@@ -26,3 +26,4 @@ Route::resource('users', UsersController::class)->only([
 ]);
 
 Route::post('login', [LoginController::class, 'login'])->middleware(['api']);
+Route::post('logout', [LoginController::class, 'logout'])->middleware(['api', 'jwt.auth']);

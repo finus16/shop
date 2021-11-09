@@ -23,6 +23,13 @@ class LoginController extends Controller
         return $this->respondWithToken($token);
     }
 
+    public function logout(): JsonResponse
+    {
+        Auth::logout();
+
+        return response()->json('ok');
+    }
+
     /**
      * Returns json response after sucessfully login with generated token
      *
