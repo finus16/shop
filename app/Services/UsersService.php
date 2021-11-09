@@ -19,6 +19,10 @@ class UsersService
 
     public function update(User &$user, $data): bool
     {
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
         $user->update($data);
 
         return $user->save();
