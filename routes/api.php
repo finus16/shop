@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::resource('users', UsersController::class)->only([
-    'store'
+    'store',
+    'update'
 ]);
 
 Route::post('login', [LoginController::class, 'login'])->middleware(['api']);

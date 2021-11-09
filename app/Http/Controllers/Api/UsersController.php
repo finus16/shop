@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Facades\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class UsersController extends Controller
 {
@@ -35,7 +38,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserRequest $request): JsonResponse
     {
         $validatedData = $request->validated();
 
@@ -75,9 +78,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, int $id): JsonResponse
     {
-        //
+        $validatedData = $request->validated();
+
+        $user = User::find($id);
+
+        if (!Users::update($user, $validatedData)) {
+            abort(500);
+        }
+
+        return response()->json($user);
     }
 
     /**
