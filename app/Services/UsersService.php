@@ -19,17 +19,7 @@ class UsersService
 
     public function update(User &$user, $data): bool
     {
-        if (isset($data['name'])) {
-            $user->name = $data['name'];
-        }
-
-        if (isset($data['email'])) {
-            $user->email = $data['email'];
-        }
-
-        if (isset($data['password'])) {
-            $user->password = $data['password'];
-        }
+        $user->update($data);
 
         return $user->save();
     }
