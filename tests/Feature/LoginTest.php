@@ -43,7 +43,7 @@ class LoginTest extends TestCase
         Users::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => Hash::make($this->password)
+            'password' => $this->password
         ]);
     }
 }
