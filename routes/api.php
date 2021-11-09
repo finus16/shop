@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ use Illuminate\Support\Facades\Route;
 Route::resource('users', UsersController::class)->only([
     'store'
 ]);
+
+Route::post('login', [LoginController::class, 'login'])->middleware(['api']);
